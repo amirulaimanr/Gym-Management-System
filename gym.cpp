@@ -12,17 +12,6 @@ struct Client
 
 }* head;
 
-struct GymSchedule
-{
-    int rollnumber;
-    char Monday[100];
-    char Tuesday[100];
-    char Wednesday[100];
-    char Thursday[100];
-    char Friday[100];
-    struct GymSchedule *next;
-};
-
 void insert(int rollnumber, char* name, char* phone, char* gender)
 {
 
@@ -43,32 +32,6 @@ void insert(int rollnumber, char* name, char* phone, char* gender)
 		// insert client in beginning of head
 		client->next = head;
 		head = client;
-	}
-
-}
-
-void assigngym(int rollnumber, char* Monday, char* Tuesday, char* Wednesday, char* Thursday, char* Friday)
-{
-
-    struct GymSchedule * gym = (struct GymSchedule *) malloc(sizeof(struct GymSchedule));
-	gym->rollnumber = rollnumber;
-	strcpy(gym->Monday, Monday);
-	strcpy(gym->Tuesday, Tuesday);
-	strcpy(gym->Wednesday, Wednesday);
-	strcpy(gym->Thursday, Thursday);
-	strcpy(gym->Friday, Friday);
-	gym->next = NULL;
-
-	if(head==NULL){
-		// if head is NULL
-		// set client as the new head
-		head = gym;
-	}
-	else{
-		// if list is not empty
-		// insert client in beginning of head
-		gym->next = head;
-		head = gym;
 	}
 
 }
@@ -164,11 +127,6 @@ void display()
 	}
 }
 
-void gym()
-{
-
-}
-
 
 int main()
 {
@@ -223,15 +181,7 @@ printf("\n\t\t ********************************* \t\t\t");
                 display();
                 break;
             case 7:
-                printf("Enter roll number: ");
-                scanf("%d", &rollnumber);
-                printf("Enter exercise for Monday : ");
-                scanf("%s", Monday);
-                printf("Enter phone number: ");
-                scanf("%s", phone);
-                printf("Enter gender(M/F): ");
-                scanf("%s", gender);
-                insert(rollnumber, name, phone, gender);
+
                 break;
             case 8:
                 display();
